@@ -1,11 +1,11 @@
 ContentAI
-A premium AI content generation SaaS dashboard. Generate SEO-optimised blog posts, get step-by-step code explanations, and build reusable prompt libraries — all powered by Replit's built-in AI.
+A premium AI content generation SaaS dashboard. Generate SEO-optimised blog posts, get step-by-step code explanations, and build reusable prompt libraries, all powered by Replit's built-in AI.
 
 Features:
 Blog Generator:	Creates a full SEO-friendly blog post with TL;DR, subheadings, keyword integration, and a call-to-action
 Code Explainer:	breaks down any code snippet with step-by-step walkthroughs, beginner analogies, and improvement tips
 Prompt Library:	Generates 5 production-ready, reusable prompt cards structured with the CLEAR framework
-Every generation returns a live Optimisation Score — SEO score (0–100), readability grade, tone match, word count, and keywords used.
+Every generation returns a live Optimisation Score SEO score (0–100), readability grade, tone match, word count, and keywords used.
 
 Quick Start
 Prerequisites
@@ -69,7 +69,7 @@ Project Structure
 Useful Commands
 # Full typecheck across all packages
 pnpm run typecheck
-# Regenerate API hooks and Zod schemas from openapi.yaml
+# Regenerate API hooks and Zod schemas from OpenAPI.yaml
 pnpm --filter @workspace/api-spec run codegen
 # Push DB schema changes (dev only)
 pnpm --filter @workspace/db run push
