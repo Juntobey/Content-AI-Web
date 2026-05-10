@@ -51,6 +51,8 @@
   --color-sidebar-accent-border: var(--sidebar-accent-border);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
+  --color-lime-accent: hsl(var(--lime-accent));
+
   --font-sans: 'Barlow', sans-serif;
   --font-serif: 'Instrument Serif', serif;
 
@@ -61,66 +63,96 @@
 }
 
 :root {
-  --background: 34 43% 94%;
-  --foreground: 20 25% 10%;
-  --card: 34 43% 96%;
-  --card-foreground: 20 25% 10%;
-  --popover: 34 43% 96%;
-  --popover-foreground: 20 25% 10%;
-  --primary: 4 59% 51%;
+  /* Cream/white base */
+  --background: 42 55% 96%;
+  --foreground: 214 45% 12%;
+
+  --card: 42 55% 98%;
+  --card-foreground: 214 45% 12%;
+
+  --popover: 42 55% 98%;
+  --popover-foreground: 214 45% 12%;
+
+  /* Yale blue as primary */
+  --primary: 210 81% 31%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 30 20% 90%;
-  --secondary-foreground: 20 25% 10%;
-  --muted: 30 20% 90%;
-  --muted-foreground: 20 25% 40%;
-  --accent: 4 59% 51%;
-  --accent-foreground: 0 0% 100%;
+
+  /* Lemon-lime tint for secondary surfaces */
+  --secondary: 76 45% 90%;
+  --secondary-foreground: 214 45% 12%;
+
+  --muted: 76 25% 91%;
+  --muted-foreground: 214 30% 42%;
+
+  /* Lemon-lime accent */
+  --accent: 76 75% 48%;
+  --accent-foreground: 214 45% 10%;
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 30 20% 85%;
-  --input: 30 20% 85%;
-  --ring: 4 59% 51%;
+
+  --border: 210 20% 84%;
+  --input: 210 20% 84%;
+
+  /* Lemon-lime ring */
+  --ring: 76 75% 48%;
   --radius: 0.5rem;
 
-  --sidebar: 34 43% 92%;
-  --sidebar-foreground: 20 25% 10%;
-  --sidebar-border: 30 20% 85%;
-  --sidebar-primary: 4 59% 51%;
+  /* Sidebar — cream with Yale blue active states */
+  --sidebar: 42 50% 93%;
+  --sidebar-foreground: 214 45% 12%;
+  --sidebar-border: 210 20% 85%;
+  --sidebar-primary: 210 81% 31%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 30 20% 88%;
-  --sidebar-accent-foreground: 20 25% 10%;
-  --sidebar-ring: 4 59% 51%;
+  --sidebar-accent: 76 40% 88%;
+  --sidebar-accent-foreground: 214 45% 12%;
+  --sidebar-ring: 76 75% 48%;
+
+  /* Lemon-lime score ring */
+  --lime-accent: 76 75% 48%;
 }
 
 .dark {
-  --background: 20 27% 4%;
-  --foreground: 33 40% 91%;
-  --card: 20 27% 6%;
-  --card-foreground: 33 40% 91%;
-  --popover: 20 27% 6%;
-  --popover-foreground: 33 40% 91%;
-  --primary: 4 59% 51%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 20 27% 12%;
-  --secondary-foreground: 33 40% 91%;
-  --muted: 20 27% 12%;
-  --muted-foreground: 33 40% 70%;
-  --accent: 4 59% 51%;
-  --accent-foreground: 0 0% 100%;
+  /* Deep Yale-blue-tinted dark */
+  --background: 214 40% 7%;
+  --foreground: 42 40% 92%;
+
+  --card: 214 40% 10%;
+  --card-foreground: 42 40% 92%;
+
+  --popover: 214 40% 10%;
+  --popover-foreground: 42 40% 92%;
+
+  /* Lemon-lime primary pops on dark Yale blue */
+  --primary: 76 75% 52%;
+  --primary-foreground: 214 45% 8%;
+
+  --secondary: 214 40% 16%;
+  --secondary-foreground: 42 40% 92%;
+
+  --muted: 214 40% 15%;
+  --muted-foreground: 76 20% 60%;
+
+  --accent: 76 75% 52%;
+  --accent-foreground: 214 45% 8%;
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 20 27% 15%;
-  --input: 20 27% 15%;
-  --ring: 4 59% 51%;
 
-  --sidebar: 20 27% 5%;
-  --sidebar-foreground: 33 40% 91%;
-  --sidebar-border: 20 27% 15%;
-  --sidebar-primary: 4 59% 51%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 20 27% 12%;
-  --sidebar-accent-foreground: 33 40% 91%;
-  --sidebar-ring: 4 59% 51%;
+  --border: 214 40% 18%;
+  --input: 214 40% 18%;
+  --ring: 76 75% 52%;
+
+  --sidebar: 214 40% 5%;
+  --sidebar-foreground: 42 40% 92%;
+  --sidebar-border: 214 40% 18%;
+  --sidebar-primary: 76 75% 52%;
+  --sidebar-primary-foreground: 214 45% 8%;
+  --sidebar-accent: 214 40% 15%;
+  --sidebar-accent-foreground: 42 40% 92%;
+  --sidebar-ring: 76 75% 52%;
+
+  --lime-accent: 76 75% 52%;
 }
 
 @layer base {

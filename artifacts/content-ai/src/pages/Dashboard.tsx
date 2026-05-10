@@ -382,7 +382,7 @@ export default function Dashboard() {
                           cx="50" cy="50" r="45" 
                           fill="none" 
                           stroke="currentColor" 
-                          className="text-emerald-500 transition-all duration-1000 ease-out" 
+                          className="text-accent transition-all duration-1000 ease-out" 
                           strokeWidth="8" 
                           strokeDasharray="283" 
                           strokeDashoffset={283 - (283 * (currentResult.seoScore || 0)) / 100}
