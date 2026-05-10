@@ -231,19 +231,20 @@ export default function Dashboard() {
             <span className="text-muted-foreground">Words</span>
             <span className="font-semibold text-foreground">{stats?.totalWords || 0}</span>
           </div>
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-full flex items-center justify-center gap-2 p-2 rounded-md border border-sidebar-border hover:bg-sidebar-accent transition-colors text-sm font-medium"
-            data-testid="btn-theme-toggle"
-          >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-          </button>
         </div>
       </div>
 
       {/* Main Workspace */}
       <div className="flex-1 flex flex-col overflow-hidden relative">
+        {/* Theme toggle — fixed corner icon */}
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="absolute bottom-5 right-5 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-card border border-border shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 text-foreground"
+          data-testid="btn-theme-toggle"
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
         <header className="h-16 border-b border-border flex items-center px-6 bg-card/50 backdrop-blur-sm lg:hidden">
           <h1 className="text-2xl font-serif italic text-primary font-bold">ContentAI</h1>
         </header>
