@@ -1,4 +1,4 @@
-# ContentAI
+# MveloAI
 
 A premium AI content generation SaaS dashboard. Generate SEO-optimised blog posts, get step-by-step code explanations, and build reusable prompt libraries, all powered by Replit's built-in AI.
 
