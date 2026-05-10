@@ -1,0 +1,207 @@
+Build a fully functional Flask web app called ContentAI.
+
+This must not be a static mockup. It must be a working AI content
+generator with backend routes, frontend interaction, prompt logic,
+and API integration.
+
+Use this folder structure:
+
+contentai/
+├── app.py
+├── prompts.py
+├── requirements.txt
+├── templates/
+│   └── index.html
+└── static/
+    └── style.css
+
+Tech stack:
+- Python Flask
+- HTML, CSS, JavaScript
+- Replit AI API (use whatever AI model Replit provides natively)
+- Do NOT use OpenRouter, OpenAI, or any external API keys
+- Use Replit's built-in AI integration directly
+- python-dotenv only if needed
+
+=== BACKEND: app.py ===
+
+- Create Flask app
+- Use Replit's native AI client — import however Replit recommends
+- Do not require any API keys from the user
+- The AI should work out of the box on Replit
+- Create GET route "/" that renders index.html
+- Create POST route "/generate" that:
+    - Accepts JSON with: feature, input, audience, tone, keywords
+    - Validates that input is not empty
+    - Calls build_prompt() from prompts.py
+    - Sends prompt to Replit AI
+    - Calculates and returns:
+        result (the AI generated text)
+        word_count
+        seo_score (calculated from keywords used + word count)
+        readability (Excellent / Good / Fair)
+        tone_match (echo back the tone)
+        keywords_used (e.g. "3/5")
+        model_used
+
+=== PROMPTS: prompts.py ===
+
+Create build_prompt(feature, user_input, tone, audience, keywords) function.
+
+Support 3 features:
+1. blog_post
+2. code_explain
+3. prompt_library
+
+All prompts must use a CLEAR framework:
+- Context, Length, Examples, Audience, Role
+
+Also apply these ethical guidelines to all prompts:
+- Use inclusive, respectful language
+- Avoid stereotypes and bias
+- Do not invent facts or sources
+- Keep output practical and structured
+
+Blog Post Prompt requirements:
+- SEO-friendly blog post
+- TL;DR at the start
+- Engaging introduction
+- 3 sections with subheadings
+- One practical example or analogy
+- Short paragraphs (max 2 sentences)
+- Conclusion with call to action
+- 400-650 words
+- Naturally include the provided keywords
+- Match the tone and audience
+
+Code Explainer Prompt requirements:
+- Identify the programming language
+- Quick summary of what the code does
+- Step-by-step explanation
+- Explain important concepts
+- Include a beginner analogy
+- Suggest improvements or warnings
+- Do not shame the learner
+
+Prompt Library Prompt requirements:
+- Generate 5 reusable prompt cards
+- Each card must include:
+  Name, Department Tag, Task Tag, Tone Tag,
+  Context, Length, Examples, Audience, Role,
+  Full Prompt Template, Why It Works,
+  Quality Score Criteria (1-5)
+
+=== FRONTEND: index.html ===
+
+Build a full SaaS dashboard with this layout:
+
+1. Top navbar:
+   - Logo: ContentAI (italic serif font)
+   - Center links: BLOG, CODE, PROMPTS
+   - Right side: Get Started button + dark mode toggle icon
+
+2. Left sidebar (270px wide):
+   - New Generation button
+   - Tools section:
+     Blog Generator, Code Explainer, Prompt Library,
+     History, Favorites
+   - Prompt Library section with counts:
+     All Prompts (24), Blogging (8), Marketing (6),
+     Development (7), Social Media (3)
+   - Upgrade to Pro card at bottom
+   - User profile card at very bottom
+
+3. Main workspace (right of sidebar):
+   - Dynamic page title and subtitle based on selected tool
+   - Generator card with:
+     Topic / Title input
+     Target Audience dropdown (options: Developers and Tech Enthusiasts,
+     Beginner developers, Students, Small business owners)
+     Keywords input (comma separated)
+     Tone dropdown (options: Professional, Creative,
+     Beginner-friendly, Technical)
+     SEO Optimization toggle switch
+     Advanced Options button
+     Generate Content button
+
+4. Result section (two columns):
+   Left: Generated Output card with:
+     - Loading spinner while generating
+     - Rendered markdown output (convert ## to h2, ** to bold etc)
+     - New Version button (regenerates)
+     - Copy button
+     - Download button (saves as .txt)
+   Right: Optimization Score card with:
+     - Score ring showing number
+     - SEO Score
+     - Readability
+     - Tone Match
+     - Word Count
+     - Keywords Used
+
+JavaScript requirements:
+- Use fetch() to POST to /generate
+- Send: feature, input, audience, tone, keywords
+- Show loading state while waiting
+- Display result with basic markdown rendering
+- Update all score metrics from backend response
+- Copy button copies plain text
+- Download button saves result as contentai-output.txt
+- Sidebar buttons switch selected feature and update placeholders
+- Dark mode toggle switches body class
+
+=== STYLE: style.css ===
+
+Design: Soft premium AI SaaS dashboard
+
+Colors:
+- Background: cream/off-white #f7f1e9
+- Accent: red #c8453d
+- Text: dark brown #201713
+- Cards: glassmorphism with rgba white backgrounds
+- Borders: thin beige rgba(70,47,37,.11)
+
+Background:
+- Soft pink/peach radial gradient bubbles
+- Animated floating bubble canvas using JavaScript
+- Film grain overlay
+
+Typography:
+- Headings: Instrument Serif (italic)
+- Body: Barlow (300, 400, 500, 600 weights)
+- Import from Google Fonts
+
+Components:
+- Glassmorphism cards with backdrop-filter blur
+- Pill-shaped toggle switch in red
+- Sidebar with active state left border highlight
+- Red gradient Generate button with hover lift
+- Spinning loader animation
+- Breathing ring animation for empty state
+- Score ring with green border
+
+Dark mode:
+- Toggle via body.dark class
+- Dark background #0e0a08
+- All cards and panels switch to dark rgba backgrounds
+- Text switches to cream #f0e8df
+- Smooth transitions on all elements
+
+Responsive:
+- Sidebar collapses on screens below 1000px
+- Single column layout on mobile below 760px
+
+=== REQUIREMENTS ===
+
+requirements.txt:
+flask
+python-dotenv
+
+=== RUN INSTRUCTIONS ===
+
+The app must run with:
+pip install -r requirements.txt
+python app.py
+
+Use Replit's native AI — no external API keys needed.
+The app must generate real AI content out of the box on Replit.

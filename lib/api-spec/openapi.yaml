@@ -3,13 +3,15 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: ContentAI API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: content
+    description: AI content generation operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,101 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /generate:
+    post:
+      operationId: generateContent
+      tags: [content]
+      summary: Generate AI content
+      description: Generate AI content based on feature, input, tone, audience, and keywords
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerationInput"
+      responses:
+        "200":
+          description: Generated content with metrics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerationResult"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /generations:
+    get:
+      operationId: listGenerations
+      tags: [content]
+      summary: List past generations
+      description: Returns history of all past content generations
+      responses:
+        "200":
+          description: List of past generations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Generation"
+
+  /generations/{id}:
+    get:
+      operationId: getGeneration
+      tags: [content]
+      summary: Get a single generation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Generation record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generation"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: deleteGeneration
+      tags: [content]
+      summary: Delete a generation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /stats:
+    get:
+      operationId: getStats
+      tags: [content]
+      summary: Get usage statistics
+      description: Returns aggregate stats about content generated
+      responses:
+        "200":
+          description: Usage statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Stats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +131,103 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    GenerationInput:
+      type: object
+      required: [feature, input, audience, tone]
+      properties:
+        feature:
+          type: string
+          enum: [blog_post, code_explain, prompt_library]
+        input:
+          type: string
+          minLength: 1
+        audience:
+          type: string
+        tone:
+          type: string
+        keywords:
+          type: string
+
+    GenerationResult:
+      type: object
+      required: [result, wordCount, seoScore, readability, toneMatch, keywordsUsed, modelUsed, id]
+      properties:
+        id:
+          type: integer
+        result:
+          type: string
+        wordCount:
+          type: integer
+        seoScore:
+          type: integer
+        readability:
+          type: string
+        toneMatch:
+          type: string
+        keywordsUsed:
+          type: string
+        modelUsed:
+          type: string
+
+    Generation:
+      type: object
+      required: [id, feature, input, audience, tone, result, wordCount, seoScore, readability, toneMatch, keywordsUsed, modelUsed, createdAt]
+      properties:
+        id:
+          type: integer
+        feature:
+          type: string
+        input:
+          type: string
+        audience:
+          type: string
+        tone:
+          type: string
+        keywords:
+          type: ["string", "null"]
+        result:
+          type: string
+        wordCount:
+          type: integer
+        seoScore:
+          type: integer
+        readability:
+          type: string
+        toneMatch:
+          type: string
+        keywordsUsed:
+          type: string
+        modelUsed:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    Stats:
+      type: object
+      required: [totalGenerations, totalWords, avgSeoScore, byFeature]
+      properties:
+        totalGenerations:
+          type: integer
+        totalWords:
+          type: integer
+        avgSeoScore:
+          type: number
+        byFeature:
+          type: object
+          properties:
+            blog_post:
+              type: integer
+            code_explain:
+              type: integer
+            prompt_library:
+              type: integer
+          required: [blog_post, code_explain, prompt_library]

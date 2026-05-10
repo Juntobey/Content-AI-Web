@@ -1,36 +1,55 @@
-# [Project name]
+# ContentAI
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A premium AI content generation SaaS dashboard that generates blog posts, explains code, and creates prompt libraries using Replit's native AI — no API keys required.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080)
+- `pnpm --filter @workspace/content-ai run dev` — run the frontend (port 24325)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required env: `DATABASE_URL` — Postgres connection string (auto-provisioned)
+- Required env: `AI_INTEGRATIONS_OPENAI_BASE_URL`, `AI_INTEGRATIONS_OPENAI_API_KEY` — Replit AI (auto-provisioned)
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- Frontend: React + Vite, Tailwind CSS, shadcn/ui, framer-motion, wouter
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
+- AI: Replit AI Integrations (OpenAI-compatible, no user key needed)
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/api-spec/openapi.yaml` — API contract (source of truth)
+- `lib/db/src/schema/generations.ts` — Generations table schema
+- `artifacts/api-server/src/routes/content.ts` — AI generation routes
+- `artifacts/content-ai/src/pages/Dashboard.tsx` — Main dashboard page
+- `artifacts/content-ai/src/index.css` — Theme and design tokens
+- `lib/integrations-openai-ai-server/` — OpenAI server client
+- `lib/integrations-openai-ai-react/` — OpenAI React hooks
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Replit AI Integrations proxy used instead of direct OpenAI keys — zero user setup required
+- Single-page dashboard with sidebar tool switching (no page routing needed)
+- All generations persisted to Postgres for history and stats
+- SEO score calculated server-side from keyword coverage + word count + structure
+- Codegen-first: all API types flow from `openapi.yaml` → Zod schemas → React Query hooks
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+ContentAI generates three types of content:
+1. **Blog Generator** — SEO-friendly blog posts with TL;DR, headings, keyword integration
+2. **Code Explainer** — Step-by-step code walkthroughs with analogies
+3. **Prompt Library** — 5 reusable prompt cards with full structure (CLEAR framework)
+
+Each generation returns: the content, word count, SEO score (0-100), readability, tone match, and keyword usage. All generations are saved to history.
 
 ## User preferences
 
@@ -38,7 +57,10 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Google Fonts `@import url(...)` must be the VERY FIRST LINE of index.css — before `@import "tailwindcss"`
+- API server bundles with esbuild; restart workflow after any backend change
+- `pRetry.AbortError` must be imported as named `AbortError` from `p-retry` (not `pRetry.AbortError`)
+- Run `pnpm install --no-frozen-lockfile` when adding deps to AI integration libs
 
 ## Pointers
 
