@@ -1,6 +1,6 @@
 # Mvelo
 
-A premium AI content generation SaaS dashboard. Generate SEO-optimised blog posts, get step-by-step code explanations, and build reusable prompt libraries — all powered by Replit's built-in AI with no API key required.
+A AI content generation SaaS dashboard. Generate SEO-optimised blog posts, get step-by-step code explanations, and build reusable prompt libraries all powered by Replit's built-in AI.
 Documentation and Presentation link:
 Powerpoint: https://canva.link/5q4m7qa6nipv2no
 Documentation link: https://1drv.ms/w/c/3ca1c9c5eb42d44d/IQCJtM-XjpfiTrMfGmP_37L9AS4Wx0p37D6Y4Dd9b4j8vRU?e=qYltd7
@@ -11,7 +11,7 @@ Documentation link: https://1drv.ms/w/c/3ca1c9c5eb42d44d/IQCJtM-XjpfiTrMfGmP_37L
 
 | Tool | What it does |
 |---|---|
-| **Blog Generator** | Creates a full SEO-friendly blog post with TL;DR, subheadings, keyword integration, and a call-to-action |
+| **Blog Generator** | Creates a full SEO-friendly blog post with, subheadings, keyword integration, and a call-to-action |
 | **Code Explainer** | Breaks down any code snippet with step-by-step walkthroughs, beginner analogies, and improvement tips |
 | **Prompt Library** | Generates 5 production-ready, reusable prompt cards structured with the CLEAR framework |
 
