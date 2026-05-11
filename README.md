@@ -77,9 +77,9 @@ pnpm --filter @workspace/db run push
 # Build everything
 pnpm run build
 
-Documentation link and Presentation:
-https://canva.link/5q4m7qa6nipv2no
-https://1drv.ms/w/c/3ca1c9c5eb42d44d/IQCJtM-XjpfiTrMfGmP_37L9AS4Wx0p37D6Y4Dd9b4j8vRU?e=qYltd7
+Documentation and Presentation link:
+Powerpoint: https://canva.link/5q4m7qa6nipv2no
+Documentation link: https://1drv.ms/w/c/3ca1c9c5eb42d44d/IQCJtM-XjpfiTrMfGmP_37L9AS4Wx0p37D6Y4Dd9b4j8vRU?e=qYltd7
 
 License
 MIT
