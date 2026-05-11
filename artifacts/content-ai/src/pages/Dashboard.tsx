@@ -180,7 +180,7 @@ export default function Dashboard() {
             data-testid="btn-tool-prompt"
           >
             <Library size={18} className={activeFeature === "prompt_library" ? "text-primary" : "text-muted-foreground"} />
-            <span className="font-medium">Prompt Library</span>
+            <span className="font-medium"></span>
           </button>
 
           <div className="mt-8 mb-2 px-2 flex items-center gap-2 text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider">
